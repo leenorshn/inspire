@@ -5,6 +5,13 @@ import 'package:psony/presentation/blocs/news/news_bloc.dart';
 import 'package:psony/presentation/journeys/detail_article.dart';
 import 'package:psony/presentation/widgets/news_tile.dart';
 
+class TabMenu {
+  final String name;
+  final String value;
+
+  TabMenu(this.name, this.value);
+}
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -13,9 +20,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  var tabs = [
+    TabMenu("Fake-check", "Fake-check"),
+    TabMenu("Intox", "Fake-check"),
+    TabMenu("RCA-Desk", "Fake-check"),
+    TabMenu("Desk-CongoBraza", "Fake-check"),
+    TabMenu("Fake-check", "Fake-check"),
+  ];
   @override
   void initState() {
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: tabs.length, vsync: this);
     super.initState();
   }
 
@@ -51,26 +65,21 @@ class _HomePageState extends State<HomePage>
               child: TabBar(
                 controller: _tabController,
                 isScrollable: true,
-                tabs: [
-                  Tab(
-                    text: "Aujourd'hui",
-                  ),
-                  Tab(
-                    text: "Politique",
-                  ),
-                  Tab(
-                    text: "Santé",
-                  ),
-                  Tab(
-                    text: "Economie",
-                  ),
-                  Tab(
-                    text: "Sport",
-                  ),
-                  Tab(
-                    text: "Autres",
-                  )
-                ],
+                tabs: tabs
+                    .map(
+                      (e) => GestureDetector(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Tab(
+                            text: e.name,
+                          ),
+                        ),
+                        onTap: () {
+                          print("${e.value}");
+                        },
+                      ),
+                    )
+                    .toList(),
               ),
             ),
             BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
