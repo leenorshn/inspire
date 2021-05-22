@@ -4,7 +4,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psony/presentation/blocs/news/news_bloc.dart';
 import 'package:psony/presentation/journeys/detail_article.dart';
+import 'package:psony/presentation/journeys/pages/congobraza_page.dart';
+import 'package:psony/presentation/journeys/pages/fake_page.dart';
+import 'package:psony/presentation/journeys/pages/news_page.dart';
+import 'package:psony/presentation/journeys/pages/rca_page.dart';
 import 'package:psony/presentation/widgets/news_tile.dart';
+
+import 'pages/intox_page.dart';
 
 class TabMenu {
   final String name;
@@ -27,6 +33,13 @@ class _HomePageState extends State<HomePage>
     TabMenu("RCA-Desk", "Fake-check"),
     TabMenu("Desk-CongoBraza", "Fake-check"),
     TabMenu("Fake-check", "Fake-check"),
+  ];
+  var pages = [
+    FakePage(),
+    IntoxPage(),
+    RCAPage(),
+    CongoBrazaPage(),
+    NewsPage()
   ];
   @override
   void initState() {
@@ -83,9 +96,11 @@ class _HomePageState extends State<HomePage>
                     .toList(),
               ),
             ),
-            PageView.builder(itemBuilder: (context, index) {
-              return Text("");
-            })
+            PageView.builder(
+                itemCount: pages.length,
+                itemBuilder: (context, index) {
+                  return pages[index];
+                })
           ],
         ),
       ),
