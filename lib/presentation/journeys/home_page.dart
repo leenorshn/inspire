@@ -93,10 +93,11 @@ class _HomePageState extends State<HomePage>
               ),
             ),
             PageView.builder(
-                itemCount: pages.length,
-                itemBuilder: (context, index) {
-                  return pages[index];
-                })
+              itemCount: pages.length,
+              itemBuilder: (context, index) {
+                return pages[index];
+              },
+            ),
           ],
         ),
       ),
