@@ -8,13 +8,6 @@ import 'package:psony/presentation/journeys/pages/rca_page.dart';
 
 import 'pages/intox_page.dart';
 
-class TabMenu {
-  final String name;
-  final String value;
-
-  TabMenu(this.name, this.value);
-}
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -23,13 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  var tabs = [
-    TabMenu("Fake-check", "Fake-check"),
-    TabMenu("Intox", "Fake-check"),
-    TabMenu("RCA-Desk", "Fake-check"),
-    TabMenu("Desk-CongoBraza", "Fake-check"),
-    TabMenu("Fake-check", "Fake-check"),
-  ];
+
   var pages = [
     FakePage(),
     IntoxPage(),
@@ -39,7 +26,7 @@ class _HomePageState extends State<HomePage>
   ];
   @override
   void initState() {
-    _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
     super.initState();
   }
 
@@ -48,6 +35,27 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         title: Text("Congo Check"),
+        bottom: TabBar(
+          controller: _tabController,
+          isScrollable: true,
+          tabs: [
+            Tab(
+              text: "Fake-check",
+            ),
+            Tab(
+              text: "Intox",
+            ),
+            Tab(
+              text: "RCA-Desk",
+            ),
+            Tab(
+              text: "Desk-congoBrazza",
+            ),
+            Tab(
+              text: "Actualité",
+            ),
+          ],
+        ),
         elevation: 0,
         actions: [
           IconButton(
@@ -65,41 +73,9 @@ class _HomePageState extends State<HomePage>
           ),
         ],
       ),
-      body: Container(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              color: Colors.white,
-              height: 43,
-              child: TabBar(
-                controller: _tabController,
-                isScrollable: true,
-                tabs: tabs
-                    .map(
-                      (e) => GestureDetector(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Tab(
-                            text: e.name,
-                          ),
-                        ),
-                        onTap: () {
-                          print("${e.value}");
-                        },
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-            PageView.builder(
-              itemCount: pages.length,
-              itemBuilder: (context, index) {
-                return pages[index];
-              },
-            ),
-          ],
-        ),
+      body: TabBarView(
+        controller: _tabController,
+        children: pages,
       ),
     );
   }

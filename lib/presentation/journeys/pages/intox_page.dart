@@ -17,24 +17,22 @@ class IntoxPage extends StatelessWidget {
         );
       }
       if (state is NewsLoadedSuccess) {
-        return Expanded(
-          child: ListView.builder(
-              itemCount: state.articleResult.articles.length,
-              itemBuilder: (context, index) {
-                return NewsTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => DetailArticle(
-                          articles: state.articleResult.articles[index],
-                        ),
+        return ListView.builder(
+            itemCount: state.articleResult.articles.length,
+            itemBuilder: (context, index) {
+              return NewsTile(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DetailArticle(
+                        articles: state.articleResult.articles[index],
                       ),
-                    );
-                  },
-                  articles: state.articleResult.articles[index],
-                );
-              }),
-        );
+                    ),
+                  );
+                },
+                articles: state.articleResult.articles[index],
+              );
+            });
       }
       if (state is NewsLoadedFailure) {
         return Container(
