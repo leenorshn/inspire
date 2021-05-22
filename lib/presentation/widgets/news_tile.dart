@@ -26,7 +26,7 @@ class NewsTile extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Text(
-                "${this.article.title}",
+                "${this.article.title!.rendered}",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,

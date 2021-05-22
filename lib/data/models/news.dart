@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Result {
   late List<Article> articles;
 
@@ -5,7 +7,7 @@ class Result {
 
   Result.fromJson(Map<String, dynamic> json) {
     articles = [];
-    json['articles'].forEach((v) {
+    jsonDecode(json['articles']).forEach((v) {
       articles.add(new Article.fromJson(v));
     });
   }

@@ -10,9 +10,9 @@ class NewsApi {
           headers: {"content-type": "application/json"});
       print(responseBody.body);
       if (responseBody.statusCode == 200) {
-        var t = {'articles': '${responseBody.body}'};
+        Map<String, dynamic> t = {'articles': responseBody.body};
 
-        return jsonDecode(t.toString());
+        return jsonDecode(jsonEncode(t));
       } else {
         return null;
       }
