@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:psony/presentation/blocs/news/news_bloc.dart';
-import 'package:psony/presentation/journeys/detail_article.dart';
 import 'package:psony/presentation/journeys/pages/congobraza_page.dart';
 import 'package:psony/presentation/journeys/pages/fake_page.dart';
 import 'package:psony/presentation/journeys/pages/news_page.dart';
 import 'package:psony/presentation/journeys/pages/rca_page.dart';
-import 'package:psony/presentation/widgets/news_tile.dart';
 
 import 'pages/intox_page.dart';
 
