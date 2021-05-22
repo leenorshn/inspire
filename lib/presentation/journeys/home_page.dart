@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psony/presentation/blocs/news/news_bloc.dart';
 import 'package:psony/presentation/journeys/detail_article.dart';
@@ -82,45 +83,9 @@ class _HomePageState extends State<HomePage>
                     .toList(),
               ),
             ),
-            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-              if (state is NewsLoading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (state is NewsLoadedSuccess) {
-                return Expanded(
-                  child: ListView.builder(
-                      itemCount: state.articleResult.articles.length,
-                      itemBuilder: (context, index) {
-                        return NewsTile(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => DetailArticle(
-                                  articles: state.articleResult.articles[index],
-                                ),
-                              ),
-                            );
-                          },
-                          articles: state.articleResult.articles[index],
-                        );
-                      }),
-                );
-              }
-              if (state is NewsLoadedFailure) {
-                return Container(
-                  child: Center(
-                    child: Text(state.error.toString()),
-                  ),
-                );
-              }
-              return Container(
-                child: Center(
-                  child: Text("Error"),
-                ),
-              );
-            }),
+            PageView.builder(itemBuilder: (context, index) {
+              return Text("");
+            })
           ],
         ),
       ),
