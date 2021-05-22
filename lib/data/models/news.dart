@@ -1,94 +1,119 @@
-class ArticleResult {
-  //late String status;
-  late int totalResults;
-  late List<Articles> articles;
+class Result {
+  late List<Article> articles;
 
-  ArticleResult(
-      { //required this.status,
-      required this.totalResults,
-      required this.articles});
+  Result({required this.articles});
 
-  ArticleResult.fromJson(Map<String, dynamic> json) {
-    // status = json['status'];
-    totalResults = json['totalResults'];
-    if (json['articles'] != null) {
-      articles = [];
-      json['articles'].forEach((v) {
-        articles.add(new Articles.fromJson(v));
-      });
-    }
+  Result.fromJson(Map<String, dynamic> json) {
+    articles = [];
+    json['articles'].forEach((v) {
+      articles.add(new Article.fromJson(v));
+    });
+  }
+
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = new Map<String, dynamic>();
+  //   data['articles'] = this.articles.map((v) => v.toJson()).toList();
+  //   return data;
+  // }
+}
+
+class Article {
+  //int? id;
+  String? date;
+  String? modified;
+  String? link;
+  Guid? title;
+  Content? excerpt;
+  BetterFeaturedImage? betterFeaturedImage;
+
+  Article({
+    //this.id,
+    this.date,
+    this.excerpt,
+    this.link,
+    this.betterFeaturedImage,
+    this.title,
+    this.modified,
+  });
+
+  Article.fromJson(Map<String, dynamic> json) {
+    //id = json['id'];
+    date = json['date'] ?? DateTime.now();
+
+    modified = json['modified'] ?? DateTime.now();
+
+    link = json['link'] ?? "";
+    title = new Guid.fromJson(json['title']);
+
+    excerpt = Content.fromJson(json['excerpt']);
+
+    betterFeaturedImage =
+        new BetterFeaturedImage.fromJson(json['better_featured_image']);
+  }
+}
+
+class Content {
+  String? rendered;
+  bool? protected;
+
+  Content({this.rendered, this.protected});
+
+  Content.fromJson(Map<String, dynamic> json) {
+    rendered = json['rendered'];
+    protected = json['protected'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    //data['status'] = this.status;
-    data['totalResults'] = this.totalResults;
-    data['articles'] = this.articles.map((v) => v.toJson()).toList();
+    data['rendered'] = this.rendered;
+    data['protected'] = this.protected;
     return data;
   }
 }
 
-class Articles {
-  late Source source;
-  String? author;
-  late String title;
-  String? description;
-  late String url;
-  String? urlToImage;
-  late String publishedAt;
-  String? content;
+class Guid {
+  late String rendered;
 
-  Articles(
-      {required this.source,
-      this.author,
-      required this.title,
-      this.description,
-      required this.url,
-      this.urlToImage,
-      required this.publishedAt,
-      this.content});
+  Guid({required this.rendered});
 
-  Articles.fromJson(Map<String, dynamic> json) {
-    source = Source.fromJson(json['source']);
-    author = json['author'] ?? "Inconnue";
-    title = json['title'];
-    description = json['description'] ?? " Pas de description";
-    url = json['url'];
-    urlToImage = json['urlToImage'] ??
-        "http://www.intl-spectrum.com/articles/r75/ArticleDefault.jpg?x=528x372";
-    publishedAt = json['publishedAt'];
-    content = json['content'] ?? "Pas de contenue";
+  Guid.fromJson(Map<String, dynamic> json) {
+    rendered = json['rendered'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['source'] = this.source.toJson();
-    data['author'] = this.author;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['url'] = this.url;
-    data['urlToImage'] = this.urlToImage;
-    data['publishedAt'] = this.publishedAt;
-    data['content'] = this.content;
+    data['rendered'] = this.rendered;
     return data;
   }
 }
 
-class Source {
-  dynamic id;
-  late String name;
+class BetterFeaturedImage {
+  late int id;
+  late String altText;
+  late String caption;
+  late String description;
+  late String mediaType;
 
-  Source({this.id, required this.name});
+  late int post;
+  late String sourceUrl;
 
-  Source.fromJson(Map<String, dynamic> json) {
+  BetterFeaturedImage(
+      {required this.id,
+      required this.altText,
+      required this.caption,
+      required this.description,
+      required this.mediaType,
+      required this.post,
+      required this.sourceUrl});
+
+  BetterFeaturedImage.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    return data;
+    altText = json['alt_text'];
+    caption = json['caption'];
+    description = json['description'];
+    mediaType = json['media_type'];
+    //mediaDetails = MediaDetails.fromJson(json['media_details']);
+    post = json['post'];
+    sourceUrl = json['source_url'];
   }
 }

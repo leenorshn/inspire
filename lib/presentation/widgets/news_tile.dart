@@ -4,10 +4,10 @@ import 'package:psony/data/models/news.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsTile extends StatelessWidget {
-  final Articles articles;
+  final Article article;
   final VoidCallback onTap;
 
-  const NewsTile({Key? key, required this.articles, required this.onTap})
+  const NewsTile({Key? key, required this.article, required this.onTap})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -18,15 +18,15 @@ class NewsTile extends StatelessWidget {
         child: Column(
           children: [
             ...[
-              if (articles.urlToImage != "")
-                Image.network("${articles.urlToImage}")
+              if (article.betterFeaturedImage!.sourceUrl != "")
+                Image.network("${article.betterFeaturedImage!.sourceUrl}")
               else
                 Text("Pas d'image pour cet information")
             ],
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Text(
-                "${this.articles.title}",
+                "${this.article.title}",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
@@ -44,7 +44,7 @@ class NewsTile extends StatelessWidget {
                 top: 4,
               ),
               child: Text(
-                "${this.articles.description}",
+                "${this.article.excerpt!.rendered}",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
@@ -61,8 +61,7 @@ class NewsTile extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(timeago.format(
-                        DateTime.parse(this.articles.publishedAt),
+                    Text(timeago.format(DateTime.parse(this.article.date!),
                         locale: 'fr')),
                     Row(
                       children: [

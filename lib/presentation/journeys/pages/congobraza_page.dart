@@ -18,19 +18,19 @@ class CongoBrazaPage extends StatelessWidget {
       }
       if (state is NewsLoadedSuccess) {
         return ListView.builder(
-            itemCount: state.articleResult.articles.length,
+            itemCount: state.result.articles.length,
             itemBuilder: (context, index) {
               return NewsTile(
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => DetailArticle(
-                        articles: state.articleResult.articles[index],
+                        article: state.result.articles[index],
                       ),
                     ),
                   );
                 },
-                articles: state.articleResult.articles[index],
+                article: state.result.articles[index],
               );
             });
       }

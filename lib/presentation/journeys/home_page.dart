@@ -35,27 +35,6 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         title: Text("Congo Check"),
-        bottom: TabBar(
-          controller: _tabController,
-          isScrollable: true,
-          tabs: [
-            Tab(
-              text: "Fake-check",
-            ),
-            Tab(
-              text: "Intox",
-            ),
-            Tab(
-              text: "RCA-Desk",
-            ),
-            Tab(
-              text: "Desk-congoBrazza",
-            ),
-            Tab(
-              text: "Actualité",
-            ),
-          ],
-        ),
         elevation: 0,
         actions: [
           IconButton(
@@ -73,9 +52,42 @@ class _HomePageState extends State<HomePage>
           ),
         ],
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: pages,
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              height: 44,
+              child: TabBar(
+                controller: _tabController,
+                isScrollable: true,
+                tabs: [
+                  Tab(
+                    text: "Fake-check",
+                  ),
+                  Tab(
+                    text: "Intox",
+                  ),
+                  Tab(
+                    text: "RCA-Desk",
+                  ),
+                  Tab(
+                    text: "Desk-congoBrazza",
+                  ),
+                  Tab(
+                    text: "Actualité",
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: pages,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
