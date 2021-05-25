@@ -9,12 +9,12 @@ abstract class NewsState extends Equatable {
 class NewsLoading extends NewsState {}
 
 class NewsLoadedSuccess extends NewsState {
-  final ArticleResult articleResult;
+  late final Result result;
 
-  NewsLoadedSuccess(this.articleResult);
+  NewsLoadedSuccess(this.result);
 
   @override
-  List<Object> get props => [this.articleResult];
+  List<Object> get props => [this.result];
 
   @override
   bool get stringify => true;

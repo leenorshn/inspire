@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:psony/data/models/news.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class DetailArticle extends StatefulWidget {
-  final Articles articles;
+import '../../data/models/news.dart';
 
-  const DetailArticle({Key? key, required this.articles}) : super(key: key);
+class DetailArticle extends StatefulWidget {
+  final Article article;
+
+  const DetailArticle({Key? key, required this.article}) : super(key: key);
 
   @override
   _DetailArticleState createState() => _DetailArticleState();
@@ -25,12 +26,12 @@ class _DetailArticleState extends State<DetailArticle> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${this.widget.articles.title}"), //title
+        title: Text("${this.widget.article.title}"), //title
         elevation: 0,
       ),
       body: Container(
         child: WebView(
-          initialUrl: '${widget.articles.url}',
+          initialUrl: '${widget.article.link}',
         ),
       ),
     );

@@ -1,20 +1,18 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
 class NewsApi {
-  final baseUrl =
-      "https://newsapi.org/v2/top-headlines?country=fr&apiKey=c33f7cca08144575b25c27bba1761861";
+  final baseUrl = "https://congocheck.net/index.php/wp-json/wp/v2/posts";
   Future<Map<String, dynamic>?> getNews() async {
     try {
       var responseBody = await http.get(Uri.parse(baseUrl),
           headers: {"content-type": "application/json"});
-      // File file = new File("articles.json");
-      // file.writeAsString(responseBody.body, mode: FileMode.append);
       print(responseBody.body);
       if (responseBody.statusCode == 200) {
-        return jsonDecode(responseBody.body);
+        Map<String, dynamic> t = {'articles': responseBody.body};
+
+        return jsonDecode(jsonEncode(t));
       } else {
         return null;
       }

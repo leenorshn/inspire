@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:psony/presentation/blocs/news/news_bloc.dart';
-import 'package:psony/presentation/journeys/detail_article.dart';
-import 'package:psony/presentation/widgets/news_tile.dart';
+import 'package:flutter/widgets.dart';
+import 'package:psony/presentation/journeys/pages/congobraza_page.dart';
+import 'package:psony/presentation/journeys/pages/fake_page.dart';
+import 'package:psony/presentation/journeys/pages/news_page.dart';
+import 'package:psony/presentation/journeys/pages/rca_page.dart';
+
+import 'pages/intox_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,9 +16,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+
+  var pages = [
+    FakePage(),
+    IntoxPage(),
+    RCAPage(),
+    CongoBrazaPage(),
+    NewsPage()
+  ];
   @override
   void initState() {
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
     super.initState();
   }
 
@@ -42,76 +53,39 @@ class _HomePageState extends State<HomePage>
         ],
       ),
       body: Container(
+        color: Colors.white,
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              color: Colors.white,
-              height: 43,
+              height: 44,
               child: TabBar(
                 controller: _tabController,
                 isScrollable: true,
                 tabs: [
                   Tab(
-                    text: "Aujourd'hui",
+                    text: "Fake-check",
                   ),
                   Tab(
-                    text: "Politique",
+                    text: "Intox",
                   ),
                   Tab(
-                    text: "Santé",
+                    text: "RCA-Desk",
                   ),
                   Tab(
-                    text: "Economie",
+                    text: "Desk-congoBrazza",
                   ),
                   Tab(
-                    text: "Sport",
+                    text: "Actualité",
                   ),
-                  Tab(
-                    text: "Autres",
-                  )
                 ],
               ),
             ),
-            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-              if (state is NewsLoading) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (state is NewsLoadedSuccess) {
-                return Expanded(
-                  child: ListView.builder(
-                      itemCount: state.articleResult.articles.length,
-                      itemBuilder: (context, index) {
-                        return NewsTile(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => DetailArticle(
-                                  articles: state.articleResult.articles[index],
-                                ),
-                              ),
-                            );
-                          },
-                          articles: state.articleResult.articles[index],
-                        );
-                      }),
-                );
-              }
-              if (state is NewsLoadedFailure) {
-                return Container(
-                  child: Center(
-                    child: Text(state.error.toString()),
-                  ),
-                );
-              }
-              return Container(
-                child: Center(
-                  child: Text("Error"),
-                ),
-              );
-            }),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: pages,
+              ),
+            ),
           ],
         ),
       ),
