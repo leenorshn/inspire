@@ -8,7 +8,7 @@ class NewsApi {
     try {
       var responseBody = await http.get(Uri.parse(baseUrl),
           headers: {"content-type": "application/json"});
-      print(responseBody.body);
+      // print(responseBody.body);
       if (responseBody.statusCode == 200) {
         Map<String, dynamic> t = {'articles': responseBody.body};
 

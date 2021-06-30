@@ -96,7 +96,7 @@ class BetterFeaturedImage {
   late String description;
   late String mediaType;
 
-  late int post;
+  int? post;
   late String sourceUrl;
 
   BetterFeaturedImage(
@@ -115,7 +115,7 @@ class BetterFeaturedImage {
     description = json['description'];
     mediaType = json['media_type'];
     //mediaDetails = MediaDetails.fromJson(json['media_details']);
-    post = json['post'];
+    post = json['post'] ?? 1;
     sourceUrl = json['source_url'];
   }
 }

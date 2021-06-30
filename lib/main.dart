@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psony/data/data_source/news_api.dart';
 import 'package:psony/data/repository/new_repository.dart';
@@ -6,6 +8,10 @@ import 'package:psony/presentation/blocs/news/news_bloc.dart';
 import 'package:psony/presentation/journeys/home_page.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Color(0xff06B1E5),
+    statusBarBrightness: Brightness.light,
+  ));
   runApp(MyApp(
     newsRepository: NewsRepository(NewsApi()),
   ));
@@ -24,12 +30,28 @@ class MyApp extends StatelessWidget {
                 NewsBloc(newsRepository: newsRepository)..add(LoadNews()))
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Inspire"',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: Colors.red,
-          accentColor: Colors.blue,
+          primaryColor: Color(0xff06B1E5),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color(0xff06B1E5),
+            // color: Colors.white,
+            brightness: Brightness.dark,
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            ),
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontSize: 22,
+              ),
+            ),
+          ),
+          accentColor: Color(0xff06B1E5),
           tabBarTheme: TabBarTheme(
-            labelColor: Colors.red,
+            labelColor: Colors.deepOrange,
             labelStyle: TextStyle(
               fontWeight: FontWeight.w700,
             ),
