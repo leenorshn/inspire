@@ -21,7 +21,10 @@ class _ComboBoxState extends State<ComboBox> {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
-          child: Text("${widget.label}"),
+          child: Text(
+            "${widget.label}",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         Container(
           margin: EdgeInsets.only(top: 8),

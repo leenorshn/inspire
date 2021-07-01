@@ -20,17 +20,24 @@ class InputField extends StatelessWidget {
       child: TextFormField(
         keyboardType: keyboard,
         decoration: InputDecoration(
-          labelText: textHint,
+          hintText: textHint,
           labelStyle: TextStyle(
             color: Colors.grey[700],
           ),
           suffixIcon: Icon(iconData),
           fillColor: Colors.white,
           filled: true,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius ?? 8),
+            borderSide: BorderSide(color: Colors.white70),
+          ),
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(radius ?? 8)),
+            borderRadius: BorderRadius.circular(radius ?? 8),
+            borderSide: BorderSide(color: Colors.white70),
+          ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
+            borderSide: BorderSide(color: Colors.white70),
           ),
         ),
       ),

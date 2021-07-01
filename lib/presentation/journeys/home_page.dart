@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:psony/presentation/journeys/pages/congobraza_page.dart';
 import 'package:psony/presentation/journeys/pages/fake_page.dart';
 import 'package:psony/presentation/journeys/pages/news_page.dart';
-import 'package:psony/presentation/journeys/pages/rca_page.dart';
 
-import 'pages/intox_page.dart';
+import 'pages/protocol_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -38,13 +36,6 @@ class _HomePageState extends State<HomePage>
           IconButton(
             icon: Icon(
               CupertinoIcons.search,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(
-              CupertinoIcons.tag,
-              // color: Colors.white,
             ),
             onPressed: () {},
           ),
@@ -99,7 +90,7 @@ class _HomePageState extends State<HomePage>
                     text: "Actualité",
                   ),
                   Tab(
-                    text: "Intox",
+                    text: "Protocoles",
                   ),
                 ],
               ),

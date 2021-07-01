@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:psony/presentation/widgets/combo_box.dart';
 import 'package:psony/presentation/widgets/input_field.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class ContactScreen extends StatefulWidget {
+  const ContactScreen({Key? key}) : super(key: key);
 
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _ContactScreenState createState() => _ContactScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _ContactScreenState extends State<ContactScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               height: 52,
             ),
             Text(
-              "Veuillez remplir ce formulaire pour appartenir à la grande famille \n Inspire",
+              "Envoyez nous votre information pour la verification",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
@@ -49,7 +48,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
               iconData: Icons.phone_android,
               radius: 8,
             ),
-            ComboBox(items: ["Masculin", "Femmine"], label: "Genre"),
+            TextField(
+              maxLines: 4,
+              decoration: InputDecoration(
+                hintText: "Votre message ici",
+                labelStyle: TextStyle(
+                  color: Colors.grey[700],
+                ),
+                suffixIcon: Icon(CupertinoIcons.chat_bubble_text),
+                fillColor: Colors.white,
+                filled: true,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.white70),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.white70),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6),
+                  borderSide: BorderSide(color: Colors.white70),
+                ),
+              ),
+            ),
             SizedBox(
               height: 40,
             ),
@@ -67,7 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   onPressed: () {},
-                  child: Text("Rejoindre"),
+                  child: Text("Envoyer"),
                 ),
               ),
             ),

@@ -8,6 +8,8 @@ import 'package:psony/presentation/blocs/news/news_bloc.dart';
 import 'package:psony/presentation/journeys/home_page.dart';
 import 'package:psony/presentation/journeys/sign_up.dart';
 
+import 'presentation/journeys/contact_screen.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Color(0xff06B1E5),
@@ -63,6 +65,7 @@ class MyApp extends StatelessWidget {
         home: HomePage(),
         routes: {
           "signup": (context) => SignUpScreen(),
+          "contact": (context) => ContactScreen(),
         },
       ),
     );
