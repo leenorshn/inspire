@@ -17,9 +17,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         title: Text("Inspire Community"),
         centerTitle: true,
-        elevation: 1,
+        elevation: 0,
+        leading: Container(),
       ),
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        color: Theme.of(context).accentColor,
         child: ListView(
           children: [
             Text(
@@ -31,7 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             InputField(
               textHint: "Phone number",
-              iconData: CupertinoIcons.person,
+              iconData: Icons.phone_android,
               radius: 8,
             ),
             ComboBox(items: ["Masculin", "Femmine"], label: "Genre"),
