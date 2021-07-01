@@ -19,14 +19,12 @@ class _HomePageState extends State<HomePage>
 
   var pages = [
     FakePage(),
+    NewsPage(),
     IntoxPage(),
-    RCAPage(),
-    CongoBrazaPage(),
-    NewsPage()
   ];
   @override
   void initState() {
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -34,7 +32,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Congo Check"),
+        title: Text("Inspire"),
         elevation: 0,
         actions: [
           IconButton(
@@ -60,22 +58,16 @@ class _HomePageState extends State<HomePage>
               height: 44,
               child: TabBar(
                 controller: _tabController,
-                isScrollable: true,
+                //isScrollable: true,
                 tabs: [
                   Tab(
                     text: "Fake-check",
                   ),
                   Tab(
-                    text: "Intox",
-                  ),
-                  Tab(
-                    text: "RCA-Desk",
-                  ),
-                  Tab(
-                    text: "Desk-congoBrazza",
-                  ),
-                  Tab(
                     text: "Actualité",
+                  ),
+                  Tab(
+                    text: "Intox",
                   ),
                 ],
               ),
