@@ -105,7 +105,9 @@ class _HomePageState extends State<HomePage>
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed("contact");
+        },
         label: Text("Contactez-nous"),
         foregroundColor: Colors.white,
         backgroundColor: Colors.deepOrange,
