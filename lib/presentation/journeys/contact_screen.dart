@@ -14,10 +14,10 @@ class _ContactScreenState extends State<ContactScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Inspire Community"),
+        title: Text("Informez nous!"),
         centerTitle: true,
         elevation: 0,
-        leading: Container(),
+        leading: Icon(CupertinoIcons.chat_bubble_text),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -25,7 +25,7 @@ class _ContactScreenState extends State<ContactScreen> {
         child: ListView(
           children: [
             SizedBox(
-              height: 52,
+              height: 40,
             ),
             Text(
               "Envoyez nous votre information pour la verification",
@@ -39,23 +39,21 @@ class _ContactScreenState extends State<ContactScreen> {
               height: 40,
             ),
             InputField(
-              textHint: "Nom complet",
-              iconData: CupertinoIcons.person,
+              textHint: "Title de l'information ",
+              iconData: CupertinoIcons.chat_bubble_text,
               radius: 8,
             ),
-            InputField(
-              textHint: " phone ex: +243 99999 . . . ",
-              iconData: Icons.phone_android,
-              radius: 8,
+            SizedBox(
+              height: 16,
             ),
             TextField(
-              maxLines: 4,
+              maxLines: 6,
               decoration: InputDecoration(
                 hintText: "Votre message ici",
                 labelStyle: TextStyle(
                   color: Colors.grey[700],
                 ),
-                suffixIcon: Icon(CupertinoIcons.chat_bubble_text),
+                //suffixIcon: Icon(CupertinoIcons.chat_bubble_text),
                 fillColor: Colors.white,
                 filled: true,
                 enabledBorder: OutlineInputBorder(
