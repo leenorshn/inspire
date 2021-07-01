@@ -35,6 +35,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               radius: 8,
             ),
             ComboBox(items: ["Masculin", "Femmine"], label: "Genre"),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text("Rejoindre"),
+            ),
           ],
         ),
       ),

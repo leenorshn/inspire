@@ -54,31 +54,36 @@ class _HomePageState extends State<HomePage>
         color: Colors.white,
         child: Column(
           children: [
-            Container(
-              height: 48,
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              color: Colors.deepOrange,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    CupertinoIcons.person_3,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    "Joindre notre communauté",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, "signup");
+              },
+              child: Container(
+                height: 48,
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                color: Colors.deepOrange,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      CupertinoIcons.person_3,
                       color: Colors.white,
                     ),
-                  ),
-                  Icon(
-                    CupertinoIcons.chevron_right,
-                    color: Colors.white,
-                  ),
-                ],
+                    Text(
+                      "Joindre notre communauté",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Icon(
+                      CupertinoIcons.chevron_right,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
