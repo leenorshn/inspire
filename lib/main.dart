@@ -6,6 +6,7 @@ import 'package:psony/data/data_source/news_api.dart';
 import 'package:psony/data/repository/new_repository.dart';
 import 'package:psony/presentation/blocs/news/news_bloc.dart';
 import 'package:psony/presentation/journeys/home_page.dart';
+import 'package:psony/presentation/journeys/sign_up.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -60,6 +61,9 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: HomePage(),
+        routes: {
+          "signup": (context) => SignUpScreen(),
+        },
       ),
     );
   }
