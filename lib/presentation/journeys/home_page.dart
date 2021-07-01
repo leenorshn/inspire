@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:psony/presentation/journeys/pages/congobraza_page.dart';
 import 'package:psony/presentation/journeys/pages/fake_page.dart';
 import 'package:psony/presentation/journeys/pages/news_page.dart';
-import 'package:psony/presentation/journeys/pages/rca_page.dart';
 
-import 'pages/intox_page.dart';
+import 'pages/protocol_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,14 +17,12 @@ class _HomePageState extends State<HomePage>
 
   var pages = [
     FakePage(),
+    NewsPage(),
     IntoxPage(),
-    RCAPage(),
-    CongoBrazaPage(),
-    NewsPage()
   ];
   @override
   void initState() {
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -34,19 +30,12 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Congo Check"),
+        title: Text("Inspire"),
         elevation: 0,
         actions: [
           IconButton(
             icon: Icon(
               CupertinoIcons.search,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(
-              CupertinoIcons.tag,
-              // color: Colors.white,
             ),
             onPressed: () {},
           ),
@@ -56,26 +45,52 @@ class _HomePageState extends State<HomePage>
         color: Colors.white,
         child: Column(
           children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, "signup");
+              },
+              child: Container(
+                height: 48,
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                color: Colors.deepOrange,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      CupertinoIcons.person_3,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "Joindre notre communauté",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Icon(
+                      CupertinoIcons.chevron_right,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Container(
               height: 44,
               child: TabBar(
                 controller: _tabController,
-                isScrollable: true,
+                //isScrollable: true,
                 tabs: [
                   Tab(
                     text: "Fake-check",
                   ),
                   Tab(
-                    text: "Intox",
-                  ),
-                  Tab(
-                    text: "RCA-Desk",
-                  ),
-                  Tab(
-                    text: "Desk-congoBrazza",
-                  ),
-                  Tab(
                     text: "Actualité",
+                  ),
+                  Tab(
+                    text: "Protocoles",
                   ),
                 ],
               ),
@@ -87,6 +102,18 @@ class _HomePageState extends State<HomePage>
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.of(context).pushNamed("contact");
+        },
+        label: Text("Contactez-nous"),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.deepOrange,
+        icon: Icon(
+          CupertinoIcons.bubble_right,
+          color: Colors.white,
         ),
       ),
     );

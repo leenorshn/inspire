@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:psony/data/models/news.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'dart:convert' show utf8;
 
 class NewsTile extends StatelessWidget {
   final Article article;
@@ -12,6 +13,15 @@ class NewsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     timeago.setLocaleMessages('fr', timeago.FrMessages());
+    //var t=utf8.decode();
+    var encoded = utf8.encode(this.article.title!.rendered);
+    var decoded = utf8.decode(encoded);
+    var encodedShort = utf8.encode(this.article.excerpt!.rendered ?? " ");
+    var trr = this.article.excerpt!.rendered ?? " ";
+
+    if (trr.contains("<p>")) {
+      trr = trr.replaceAll("<p>", " ");
+    }
     return InkWell(
       onTap: this.onTap,
       child: Container(
@@ -26,7 +36,7 @@ class NewsTile extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Text(
-                "${this.article.title!.rendered}",
+                "$decoded",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
@@ -44,9 +54,9 @@ class NewsTile extends StatelessWidget {
                 top: 4,
               ),
               child: Text(
-                "${this.article.excerpt!.rendered}",
+                "$trr",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: Colors.grey[500],
                 ),
@@ -57,32 +67,25 @@ class NewsTile extends StatelessWidget {
             Card(
               elevation: 0,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(timeago.format(DateTime.parse(this.article.date!),
-                        locale: 'fr')),
-                    Row(
-                      children: [
-                        Text.rich(TextSpan(
-                            text: "10",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.grey[600]),
-                            children: [
-                              TextSpan(
-                                  text: " vue",
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.grey[500]))
-                            ])),
-                        IconButton(
-                            icon: Icon(CupertinoIcons.tags_solid,
-                                color: Color(0xff21ce99)),
-                            onPressed: () {}),
-                      ],
-                    )
+                    Icon(
+                      CupertinoIcons.time,
+                      size: 20,
+                      color: Colors.grey[700],
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      timeago.format(
+                        DateTime.parse(this.article.date!),
+                        locale: 'fr',
+                      ),
+                      style: TextStyle(color: Colors.grey[700], fontSize: 14),
+                    ),
                   ],
                 ),
               ),
