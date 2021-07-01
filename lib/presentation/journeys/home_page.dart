@@ -55,6 +55,33 @@ class _HomePageState extends State<HomePage>
         child: Column(
           children: [
             Container(
+              height: 48,
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              color: Colors.deepOrange,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    CupertinoIcons.person_3,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Joindre notre communauté",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Icon(
+                    CupertinoIcons.chevron_right,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ),
+            Container(
               height: 44,
               child: TabBar(
                 controller: _tabController,
@@ -79,6 +106,16 @@ class _HomePageState extends State<HomePage>
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: Text("Contactez-nous"),
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.deepOrange,
+        icon: Icon(
+          CupertinoIcons.bubble_right,
+          color: Colors.white,
         ),
       ),
     );
