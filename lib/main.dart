@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:psony/data/data_source/news_api.dart';
-import 'package:psony/data/repository/new_repository.dart';
+import 'package:inspire/data/data_source/news_api.dart';
+import 'package:inspire/data/repository/new_repository.dart';
 
-import 'package:psony/presentation/blocs/news/news_bloc.dart';
-import 'package:psony/presentation/journeys/home_page.dart';
-import 'package:psony/presentation/journeys/sign_up.dart';
+import 'package:inspire/presentation/blocs/news/news_bloc.dart';
+import 'package:inspire/presentation/journeys/home_page.dart';
+import 'package:inspire/presentation/journeys/sign_up.dart';
 
 import 'presentation/journeys/contact_screen.dart';
 

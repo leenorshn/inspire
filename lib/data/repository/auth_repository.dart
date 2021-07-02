@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:psony/data/models/local_user.dart';
+import 'package:inspire/data/models/local_user.dart';
 
 class AuthRepository with ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

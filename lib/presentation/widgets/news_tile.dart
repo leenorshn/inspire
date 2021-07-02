@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:psony/data/models/news.dart';
+import 'package:inspire/data/models/news.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'dart:convert' show utf8;
 
