@@ -1,5 +1,5 @@
-import 'package:psony/data/data_source/news_api.dart';
-import 'package:psony/data/models/news.dart';
+import 'package:inspire/data/data_source/news_api.dart';
+import 'package:inspire/data/models/news.dart';
 
 import '../models/news.dart';
 

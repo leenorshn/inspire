@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:psony/presentation/journeys/pages/fake_page.dart';
-import 'package:psony/presentation/journeys/pages/news_page.dart';
+
+import 'package:inspire/presentation/journeys/pages/fake_page.dart';
+import 'package:inspire/presentation/journeys/pages/news_page.dart';
 
 import 'pages/protocol_page.dart';
 
@@ -45,38 +47,46 @@ class _HomePageState extends State<HomePage>
         color: Colors.white,
         child: Column(
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, "signup");
-              },
-              child: Container(
-                height: 48,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                color: Colors.deepOrange,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
-                      CupertinoIcons.person_3,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Joindre notre communauté",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
+            StreamBuilder(
+                stream:
+                    FirebaseFirestore.instance.collection("users").snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData && snapshot.data != null) {
+                    return Container();
+                  }
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("signup");
+                    },
+                    child: Container(
+                      height: 48,
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      color: Colors.deepOrange,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            CupertinoIcons.person_3,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Joindre notre communauté",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Icon(
+                            CupertinoIcons.chevron_right,
+                            color: Colors.white,
+                          ),
+                        ],
                       ),
                     ),
-                    Icon(
-                      CupertinoIcons.chevron_right,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+                  );
+                }),
             Container(
               height: 44,
               child: TabBar(

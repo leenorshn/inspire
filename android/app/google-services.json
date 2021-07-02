@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168802469081",
+    "project_id": "inspire-25c05",
+    "storage_bucket": "inspire-25c05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168802469081:android:aaafb83bce707318a32ac8",
+        "android_client_info": {
+          "package_name": "com.africadev.inspiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168802469081-kq5bkndq5bir016pkmcku4jlv8ddlmfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKERbraZ2QAhJfWJwrL4BT8t-5BI7X6pI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168802469081-kq5bkndq5bir016pkmcku4jlv8ddlmfi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

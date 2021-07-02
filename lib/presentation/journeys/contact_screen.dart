@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:psony/presentation/widgets/input_field.dart';
+import 'package:inspire/presentation/widgets/input_field.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({Key? key}) : super(key: key);
@@ -10,6 +10,7 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
+  TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +42,7 @@ class _ContactScreenState extends State<ContactScreen> {
             InputField(
               textHint: "Title de l'information ",
               iconData: CupertinoIcons.chat_bubble_text,
+              controller: phoneController,
               radius: 8,
             ),
             SizedBox(

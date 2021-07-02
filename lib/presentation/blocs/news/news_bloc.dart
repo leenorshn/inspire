@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:psony/data/models/news.dart';
-import 'package:psony/data/repository/new_repository.dart';
+import 'package:inspire/data/models/news.dart';
+import 'package:inspire/data/repository/new_repository.dart';
 
 part 'news_event.dart';
 part 'news_state.dart';

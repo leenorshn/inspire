@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:psony/presentation/widgets/combo_box.dart';
-import 'package:psony/presentation/widgets/input_field.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:inspire/data/repository/auth_repository.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -11,6 +12,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  var auth = AuthRepository();
+
+  String phoneController = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,17 +44,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               height: 40,
             ),
-            InputField(
-              textHint: "Nom complet",
-              iconData: CupertinoIcons.person,
-              radius: 8,
+            Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white,
+              ),
+              child: IntlPhoneField(
+                countries: ["CD"],
+                decoration: InputDecoration(
+                  hintText: 'Ex: 988827000',
+                  border: InputBorder.none,
+                ),
+                initialCountryCode: 'CD',
+                showDropdownIcon: false,
+                onChanged: (phone) {
+                  print(phone.completeNumber);
+                  setState(() {
+                    phoneController = phone.completeNumber;
+                  });
+                },
+              ),
             ),
-            InputField(
-              textHint: " phone ex: +243 99999 . . . ",
-              iconData: Icons.phone_android,
-              radius: 8,
-            ),
-            ComboBox(items: ["Masculin", "Femmine"], label: "Genre"),
             SizedBox(
               height: 40,
             ),
@@ -66,7 +82,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       vertical: 15,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    await auth.addUser(phone: phoneController);
+                    Navigator.pop(context);
+                  },
                   child: Text("Rejoindre"),
                 ),
               ),
