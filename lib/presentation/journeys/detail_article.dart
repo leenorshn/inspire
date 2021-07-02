@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:psony/presentation/blocs/detail/webview_bloc.dart';
-import 'package:psony/presentation/widgets/loading.dart';
+import 'package:inspire/presentation/blocs/detail/webview_bloc.dart';
+import 'package:inspire/presentation/widgets/loading.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../data/models/news.dart';

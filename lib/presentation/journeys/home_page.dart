@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:psony/presentation/journeys/pages/fake_page.dart';
-import 'package:psony/presentation/journeys/pages/news_page.dart';
+import 'package:inspire/presentation/journeys/pages/fake_page.dart';
+import 'package:inspire/presentation/journeys/pages/news_page.dart';
 
 import 'pages/protocol_page.dart';
 
