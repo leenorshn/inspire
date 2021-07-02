@@ -1,4 +1,4 @@
-package com.psonybusiness.psony;
+package com.africadev.inspiro;
 
 import io.flutter.embedding.android.FlutterActivity;
 

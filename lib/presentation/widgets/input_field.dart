@@ -6,12 +6,14 @@ class InputField extends StatelessWidget {
       required this.textHint,
       this.radius,
       required this.iconData,
+      required this.controller,
       this.keyboard})
       : super(key: key);
   final String textHint;
   final IconData iconData;
   final double? radius;
   final TextInputType? keyboard;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class InputField extends StatelessWidget {
       margin: EdgeInsets.only(top: 16),
       child: TextFormField(
         keyboardType: keyboard,
+        controller: controller,
         decoration: InputDecoration(
           hintText: textHint,
           labelStyle: TextStyle(

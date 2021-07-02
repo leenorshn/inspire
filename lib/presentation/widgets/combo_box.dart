@@ -2,10 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ComboBox extends StatefulWidget {
-  const ComboBox({Key? key, required this.items, required this.label})
+  const ComboBox(
+      {Key? key,
+      required this.items,
+      required this.label,
+      required this.onChange})
       : super(key: key);
   final List<String> items;
   final String label;
+  final Function(String?) onChange;
 
   @override
   _ComboBoxState createState() => _ComboBoxState();
@@ -49,11 +54,7 @@ class _ComboBoxState extends State<ComboBox> {
               height: 2,
               color: Colors.white,
             ),
-            onChanged: (String? newValue) {
-              setState(() {
-                dropdownValue = newValue!;
-              });
-            },
+            onChanged: widget.onChange,
             items: widget.items.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,

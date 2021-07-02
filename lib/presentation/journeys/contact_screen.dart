@@ -10,6 +10,7 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
+  TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +42,7 @@ class _ContactScreenState extends State<ContactScreen> {
             InputField(
               textHint: "Title de l'information ",
               iconData: CupertinoIcons.chat_bubble_text,
+              controller: phoneController,
               radius: 8,
             ),
             SizedBox(
