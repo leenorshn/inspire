@@ -26,16 +26,14 @@ class AuthRepository with ChangeNotifier {
     }
   }
 
-  Future<void> addUser(
-      {required String name,
-      required String gender,
-      required String uid,
-      required String phone}) async {
-    return await FirebaseFirestore.instance.collection("users").doc(uid).set({
-      "uid": uid,
+  Future<void> addUser({required String phone}) async {
+    var user = await FirebaseAuth.instance.signInAnonymously();
+    return await FirebaseFirestore.instance
+        .collection("users")
+        .doc(user.user!.uid)
+        .set({
+      "uid": user.user!.uid,
       "phone": phone,
-      "name": name,
-      "gender": gender,
     });
   }
 

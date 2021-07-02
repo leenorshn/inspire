@@ -38,6 +38,8 @@ dependencies:
   timeago: ^3.0.2
   loading_animations: ^2.2.0
   rxdart: ^0.27.1
+  intl_phone_field: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:

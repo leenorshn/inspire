@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psony/data/data_source/news_api.dart';
-import 'package:psony/data/repository/auth_repository.dart';
 import 'package:psony/data/repository/new_repository.dart';
-import 'package:psony/presentation/blocs/auth/auth_bloc.dart';
+
 import 'package:psony/presentation/blocs/news/news_bloc.dart';
 import 'package:psony/presentation/journeys/home_page.dart';
 import 'package:psony/presentation/journeys/sign_up.dart';
@@ -37,48 +36,41 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 NewsBloc(newsRepository: newsRepository)..add(LoadNews()))
       ],
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider<AuthBloc>(
-              create: (context) =>
-                  AuthBloc(AuthRepository())..add(AuthStartedEvent()))
-        ],
-        child: MaterialApp(
-          title: 'Inspire"',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primaryColor: Color(0xff06B1E5),
-            appBarTheme: AppBarTheme(
-              backgroundColor: Color(0xff06B1E5),
-              // color: Colors.white,
-              brightness: Brightness.dark,
-              iconTheme: IconThemeData(
+      child: MaterialApp(
+        title: 'Inspire"',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Color(0xff06B1E5),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color(0xff06B1E5),
+            // color: Colors.white,
+            brightness: Brightness.dark,
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            ),
+            textTheme: TextTheme(
+              headline6: TextStyle(
                 color: Colors.white,
-              ),
-              textTheme: TextTheme(
-                headline6: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 22,
-                ),
-              ),
-            ),
-            accentColor: Color(0xff06B1E5),
-            tabBarTheme: TabBarTheme(
-              labelColor: Colors.deepOrange,
-              labelStyle: TextStyle(
                 fontWeight: FontWeight.w700,
+                fontSize: 22,
               ),
-              unselectedLabelColor: Colors.grey,
             ),
-            visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: HomePage(),
-          routes: {
-            "signup": (context) => SignUpScreen(),
-            "contact": (context) => ContactScreen(),
-          },
+          accentColor: Color(0xff06B1E5),
+          tabBarTheme: TabBarTheme(
+            labelColor: Colors.deepOrange,
+            labelStyle: TextStyle(
+              fontWeight: FontWeight.w700,
+            ),
+            unselectedLabelColor: Colors.grey,
+          ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        home: HomePage(),
+        routes: {
+          "signup": (context) => SignUpScreen(),
+          "contact": (context) => ContactScreen(),
+        },
       ),
     );
   }
