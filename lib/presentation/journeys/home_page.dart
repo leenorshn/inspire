@@ -93,12 +93,12 @@ class _HomePageState extends State<HomePage>
                   Tab(
                     text: "Fake-check",
                   ),
-                  Tab(
-                    text: "Actualité",
-                  ),
-                  Tab(
-                    text: "Protocoles",
-                  ),
+                  // Tab(
+                  //   text: "Actualité",
+                  // ),
+                  // Tab(
+                  //   text: "Protocoles",
+                  // ),
                 ],
               ),
             ),
