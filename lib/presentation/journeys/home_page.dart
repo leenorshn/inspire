@@ -19,12 +19,12 @@ class _HomePageState extends State<HomePage>
 
   var pages = [
     FakePage(),
-    NewsPage(),
-    IntoxPage(),
+    //NewsPage(),
+    //IntoxPage(),
   ];
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 1, vsync: this);
     super.initState();
   }
 
