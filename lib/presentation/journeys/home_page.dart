@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:inspire/presentation/journeys/pages/fake_page.dart';
-import 'package:inspire/presentation/journeys/pages/news_page.dart';
-
-import 'pages/protocol_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,12 +16,12 @@ class _HomePageState extends State<HomePage>
 
   var pages = [
     FakePage(),
-    NewsPage(),
-    IntoxPage(),
+    //NewsPage(),
+    //IntoxPage(),
   ];
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 1, vsync: this);
     super.initState();
   }
 
@@ -96,12 +93,12 @@ class _HomePageState extends State<HomePage>
                   Tab(
                     text: "Fake-check",
                   ),
-                  Tab(
-                    text: "Actualité",
-                  ),
-                  Tab(
-                    text: "Protocoles",
-                  ),
+                  // Tab(
+                  //   text: "Actualité",
+                  // ),
+                  // Tab(
+                  //   text: "Protocoles",
+                  // ),
                 ],
               ),
             ),
