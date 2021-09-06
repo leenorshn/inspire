@@ -9,7 +9,7 @@ abstract class NewsState extends Equatable {
 class NewsLoading extends NewsState {}
 
 class NewsLoadedSuccess extends NewsState {
-  late final Result result;
+  late final List<News> result;
 
   NewsLoadedSuccess(this.result);
 

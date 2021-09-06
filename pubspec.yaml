@@ -39,6 +39,10 @@ dependencies:
   loading_animations: ^2.2.0
   rxdart: ^0.27.1
   intl_phone_field: ^2.0.1
+  cached_network_image: ^3.1.0
+  sqflite: ^2.0.0+4
+  flutter_svg: ^0.22.0
+  carousel_slider: ^4.0.0
 
 
 dev_dependencies:
@@ -57,8 +61,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

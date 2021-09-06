@@ -18,19 +18,19 @@ class FakePage extends StatelessWidget {
       }
       if (state is NewsLoadedSuccess) {
         return ListView.builder(
-            itemCount: state.result.articles.length,
+            itemCount: state.result.length,
             itemBuilder: (context, index) {
               return NewsTile(
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => DetailArticle(
-                        article: state.result.articles[index],
+                        article: state.result[index],
                       ),
                     ),
                   );
                 },
-                article: state.result.articles[index],
+                article: state.result[index],
               );
             });
       }

@@ -1,11 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:inspire/data/models/news.dart';
+import 'package:inspire/data/repository/article_help_db.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'dart:convert' show utf8;
 
 class NewsTile extends StatelessWidget {
-  final Article article;
+  final News article;
   final VoidCallback onTap;
 
   const NewsTile({Key? key, required this.article, required this.onTap})
@@ -14,10 +14,10 @@ class NewsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     timeago.setLocaleMessages('fr', timeago.FrMessages());
     //var t=utf8.decode();
-    var encoded = utf8.encode(this.article.title!.rendered);
-    var decoded = utf8.decode(encoded);
-    var encodedShort = utf8.encode(this.article.excerpt!.rendered ?? " ");
-    var trr = this.article.excerpt!.rendered ?? " ";
+    // var encoded = utf8.encode(this.article.title);
+    // var decoded = utf8.decode(encoded);
+    // var encodedShort = utf8.encode(this.article.content );
+    var trr = this.article.content;
 
     if (trr.contains("<p>")) {
       trr = trr.replaceAll("<p>", " ");
@@ -28,15 +28,17 @@ class NewsTile extends StatelessWidget {
         child: Column(
           children: [
             ...[
-              if (article.betterFeaturedImage!.sourceUrl != "")
-                Image.network("${article.betterFeaturedImage!.sourceUrl}")
+              if (article.imageUrl != "")
+                CachedNetworkImage(
+                  imageUrl: "${article.imageUrl}",
+                )
               else
                 Text("Pas d'image pour cet information")
             ],
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: Text(
-                "$decoded",
+                "${article.title}",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
@@ -54,7 +56,7 @@ class NewsTile extends StatelessWidget {
                 top: 4,
               ),
               child: Text(
-                "$trr",
+                "${article.title}",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
@@ -81,7 +83,7 @@ class NewsTile extends StatelessWidget {
                     ),
                     Text(
                       timeago.format(
-                        DateTime.parse(this.article.date!),
+                        DateTime.parse(this.article.createdAt),
                         locale: 'fr',
                       ),
                       style: TextStyle(color: Colors.grey[700], fontSize: 14),

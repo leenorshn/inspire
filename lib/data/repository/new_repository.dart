@@ -2,19 +2,33 @@ import 'package:inspire/data/data_source/news_api.dart';
 import 'package:inspire/data/models/news.dart';
 
 import '../models/news.dart';
+import 'article_help_db.dart';
 
 class NewsRepository {
   final NewsApi newsApi;
+  final NewsProvider newsProvider;
 
-  NewsRepository(this.newsApi);
+  NewsRepository(this.newsApi, this.newsProvider);
 
-  Future<Result> getArticleResults() async {
+  Future<List<News>> getArticleResults() async {
     Map<String, dynamic>? data = await newsApi.getNews();
-    //print(">>>>> ${data.toString()}");
-    // return data!.map((k){
-    //   return Article.fromJson(k)
-    // });
+    var news = Result.fromJson(data!);
+    await newsProvider.open("news.db");
+    news.articles.forEach((element) async {
+      var t = await newsProvider.getOneNews(element.title!.rendered);
+      if (t == null) {
+        await newsProvider.insert(
+          News(
+            content: "${element.excerpt!.rendered}",
+            title: element.title!.rendered,
+            createdAt: "${element.date}",
+            imageUrl: element.betterFeaturedImage!.sourceUrl,
+          ),
+        );
+      }
+    });
 
-    return Result.fromJson(data!);
+    var newsResult = await newsProvider.getNews();
+    return newsResult;
   }
 }

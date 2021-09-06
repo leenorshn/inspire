@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:flutter/widgets.dart';
 import 'package:inspire/data/repository/auth_repository.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -14,7 +13,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   var auth = AuthRepository();
 
-  String phoneController = "";
+  TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,25 +44,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
               height: 40,
             ),
             Container(
-              padding: EdgeInsets.all(8),
+              //padding: EdgeInsets.all(8),
+              margin: EdgeInsets.symmetric(horizontal: 24),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Colors.white,
               ),
-              child: IntlPhoneField(
-                countries: ["CD"],
+              child: TextFormField(
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  hintText: 'Ex: 988827000',
-                  border: InputBorder.none,
-                ),
-                initialCountryCode: 'CD',
-                showDropdownIcon: false,
-                onChanged: (phone) {
-                  print(phone.completeNumber);
-                  setState(() {
-                    phoneController = phone.completeNumber;
-                  });
-                },
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 16,
+                      ),
+                      child: Text("+243"),
+                    ),
+                    hintText: "9 7 8 2 2 3 . . ."),
               ),
             ),
             SizedBox(
@@ -83,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   onPressed: () async {
-                    await auth.addUser(phone: phoneController);
+                    await auth.addUser(phone: "+243" + phoneController.text);
                     Navigator.pop(context);
                   },
                   child: Text("Rejoindre"),
