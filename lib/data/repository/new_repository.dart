@@ -14,6 +14,7 @@ class NewsRepository {
     Map<String, dynamic>? data = await newsApi.getNews();
     var news = Result.fromJson(data!);
     await newsProvider.open("news.db");
+    var newsResult = await newsProvider.getNews();
     news.articles.forEach((element) async {
       var t = await newsProvider.getOneNews(element.title!.rendered);
       if (t == null) {
@@ -28,7 +29,6 @@ class NewsRepository {
       }
     });
 
-    var newsResult = await newsProvider.getNews();
     return newsResult;
   }
 }

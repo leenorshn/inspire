@@ -22,7 +22,7 @@ class _ContactScreenState extends State<ContactScreen> {
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        color: Theme.of(context).accentColor,
+        //color: Theme.of(context).accentColor,
         child: ListView(
           children: [
             SizedBox(
@@ -33,7 +33,7 @@ class _ContactScreenState extends State<ContactScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.white70,
+                color: Colors.purple[800],
               ),
             ),
             SizedBox(
@@ -80,7 +80,7 @@ class _ContactScreenState extends State<ContactScreen> {
               child: Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
+                    primary: Colors.purple[900],
                     textStyle: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w700),
                     padding: EdgeInsets.symmetric(

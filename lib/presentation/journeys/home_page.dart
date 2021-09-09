@@ -3,17 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:inspire/presentation/journeys/pages/fake_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
+class _HomePageState extends State<HomePage> {
   var images = [
     "images/3.jpg",
     "images/2.jpg",
@@ -21,17 +17,6 @@ class _HomePageState extends State<HomePage>
     "images/4.jpg",
     "images/5.jpg"
   ];
-
-  var pages = [
-    FakePage(),
-    //NewsPage(),
-    //IntoxPage(),
-  ];
-  @override
-  void initState() {
-    _tabController = TabController(length: 1, vsync: this);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,27 +87,32 @@ class _HomePageState extends State<HomePage>
             ),
           ),
           CardMenu(
-            bg: 0xFF4f0ead,
-            titleColor: Colors.orange,
-            title: "Enquete sur le Vaccin COVID",
-            subTitle: "Quel est votre avis sur le vaccin COVID19",
-            svg: "images/virus.svg",
-            onTap: () {},
-          ),
-          CardMenu(
             bg: 0xFFFF9800,
             titleColor: Colors.black,
             title: "Lutte contre COVID-19",
             subTitle: "Guide pour lutter contre le covid 19",
             svg: "images/virus (1).svg",
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed("care_page");
+            },
+          ),
+          CardMenu(
+            bg: 0xFF4f0ead,
+            titleColor: Colors.orange,
+            title: "Contactez-nous",
+            subTitle:
+                "Nous avons besoin de vos messages pour lutter contre le COVID19",
+            svg: "images/virus.svg",
+            onTap: () {
+              Navigator.of(context).pushNamed("contact");
+            },
           ),
           CardMenu(
             bg: 0xFF21CE99,
             titleColor: Colors.white,
             title: "Rejoindre notre communauté",
             subTitle: "Ensemble nous luttons la santé des uns pour les autres",
-            svg: "images/medical-mask.svg",
+            svg: "images/communities.svg",
             onTap: () {
               Navigator.of(context).pushNamed("signup");
             },

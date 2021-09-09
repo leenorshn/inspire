@@ -1,0 +1,26 @@
+[{
+  "title": "Hygeine ++",
+  "content": "Se laver les mains regulierement avec de l'eau et du savons pendant 20 s",
+  "image": "images/covid-19.svg",
+  "color": "0xff00ff00"
+},
+  {
+    "title": "Distaciation sociale",
+    "content": "Restez a une distance minimum de 1 metre de ton proche",
+    "image": "images/quarantine.svg",
+    "color": "0xff0000ff"
+  },
+
+  {
+    "title": "Restez a la maison",
+    "content": "C'est mieux de rester seul a la maison pour arreter la propagation de la maladie",
+    "image": "images/stay-home.svg",
+    "color": "0xff21ce99"
+  },
+  {
+    "title": "En cas d'urgence",
+    "content": "Contactez nous aux +243990000111",
+    "image": "images/24h.svg",
+    "color": "0xffff0000"
+  }
+]

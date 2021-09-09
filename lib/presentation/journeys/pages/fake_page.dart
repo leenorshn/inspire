@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,7 @@ class FakePage extends StatelessWidget {
       if (state is NewsLoadedSuccess) {
         return ListView.builder(
             itemCount: state.result.length,
+            padding: EdgeInsets.only(bottom: 72),
             itemBuilder: (context, index) {
               return NewsTile(
                 onTap: () {

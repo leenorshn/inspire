@@ -1,21 +1,23 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inspire/data/data_source/care_api.dart';
 import 'package:inspire/data/data_source/news_api.dart';
 import 'package:inspire/data/repository/article_help_db.dart';
 import 'package:inspire/data/repository/new_repository.dart';
+import 'package:inspire/presentation/blocs/care/care_bloc.dart';
 import 'package:inspire/presentation/blocs/news/news_bloc.dart';
 import 'package:inspire/presentation/journeys/article_list.dart';
+import 'package:inspire/presentation/journeys/care_page.dart';
 import 'package:inspire/presentation/journeys/home_page.dart';
 import 'package:inspire/presentation/journeys/sign_up.dart';
+import 'package:splash_screen_view/SplashScreenView.dart';
 
 import 'presentation/journeys/contact_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
   runApp(MyApp(
     newsRepository: NewsRepository(NewsApi(), NewsProvider()),
@@ -32,7 +34,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) =>
-                NewsBloc(newsRepository: newsRepository)..add(LoadNews()))
+                NewsBloc(newsRepository: newsRepository)..add(LoadNews())),
+        BlocProvider(
+            create: (context) => CareBloc(CareApi())..add(LoadCareEvent()))
       ],
       child: MaterialApp(
         title: 'Inspire"',
@@ -70,11 +74,25 @@ class MyApp extends StatelessWidget {
           ),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomePage(),
+        home: SplashScreenView(
+          navigateRoute: HomePage(),
+          duration: 3000,
+          imageSize: 130,
+          imageSrc: "images/covid.png",
+          text: "Inspire covid-19",
+          textType: TextType.NormalText,
+          textStyle: TextStyle(
+            fontSize: 30.0,
+            fontWeight: FontWeight.w700,
+            color: Colors.orange,
+          ),
+          backgroundColor: Colors.purple[900],
+        ),
         routes: {
           "signup": (context) => SignUpScreen(),
           "contact": (context) => ContactScreen(),
           "article_list": (context) => ArticleList(),
+          "care_page": (context) => CarePage(),
         },
       ),
     );

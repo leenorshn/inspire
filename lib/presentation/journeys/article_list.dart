@@ -14,6 +14,7 @@ class _ArticleListState extends State<ArticleList> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Infos COVID-19"),
+        elevation: 1,
       ),
       body: Container(
         child: FakePage(),

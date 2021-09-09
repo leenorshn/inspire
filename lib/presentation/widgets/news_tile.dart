@@ -40,9 +40,9 @@ class NewsTile extends StatelessWidget {
               child: Text(
                 "${article.title}",
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.purple[900]),
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,

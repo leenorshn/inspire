@@ -26,7 +26,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        color: Theme.of(context).accentColor,
         child: ListView(
           children: [
             SizedBox(
@@ -37,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.white70,
+                color: Colors.purple[800],
               ),
             ),
             SizedBox(
@@ -72,9 +71,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
+                    primary: Colors.purple[900],
                     textStyle: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w700),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                    ),
                     padding: EdgeInsets.symmetric(
                       horizontal: 56,
                       vertical: 15,
